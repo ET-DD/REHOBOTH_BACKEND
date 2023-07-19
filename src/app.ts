@@ -1,4 +1,5 @@
 import { config } from "dotenv";
+import "./utils/mongoose";
 import express from "express";
 import morgan from "morgan";
 import helmet from "helmet";
