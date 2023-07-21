@@ -4,12 +4,15 @@ import {
   getAllNotes,
   showNote,
   deleteNote,
+  updateNote,
 } from "../controller/note/index.note.controller";
+import { authJWT } from "../middleware/authJWT";
 const router = express.Router();
 
-router.post("/create", createNote);
-router.get("/get", getAllNotes);
-router.get("/show/:id", showNote);
-router.delete("/delete", deleteNote);
+router.post("/create", authJWT,  createNote);
+router.get("/get", authJWT, getAllNotes);
+router.get("/show/:id",  authJWT,showNote);
+router.get("/update/:id",  authJWT, updateNote);
+router.delete("/delete/:id",  authJWT, deleteNote);
 
 export default router;

@@ -5,11 +5,14 @@ import {
   getFolder,
   deleteFolder,
 } from "../controller/folder/index.folder.controller";
+import { authJWT } from "../middleware/authJWT";
 const router = express.Router();
 
-router.post("/create", createFolder);
-router.get("/get", getFolders);
-router.get("/show/:id", getFolder);
-router.delete("/delete", deleteFolder);
+router.post("/create", authJWT, createFolder);
+router.get("/get", authJWT, getFolders);
+router.get("/show/:id",  authJWT,getFolder);
+router.get("/update/:id",  authJWT, getFolder);
+
+router.delete("/delete/:id", authJWT, deleteFolder);
 
 export default router;
