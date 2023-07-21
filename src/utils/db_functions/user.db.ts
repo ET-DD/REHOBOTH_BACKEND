@@ -1,3 +1,4 @@
+import { UserModelID } from "../../interfaces/user.interface";
 import UserModel from "../../model/user.model";
 
 export async function getAllUsers() {
@@ -9,5 +10,5 @@ export async function showUsersbyId(id: string) {
 }
 
 export async function showUsersbyEmail(email: string) {
-    return await UserModel.findOne({email: email})
+    return await UserModel.findOne({email: email}) as UserModelID
 }

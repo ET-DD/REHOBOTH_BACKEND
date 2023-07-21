@@ -14,12 +14,10 @@ export const register = async (req: Request, res: Response) => {
   const {
     fullName,
     email,
-    phoneNumber,
     password,
   }: {
     fullName: string;
     email: string;
-    phoneNumber: string;
     password: string;
   } = req.body;
 
@@ -29,13 +27,12 @@ export const register = async (req: Request, res: Response) => {
 
     if (verifyUser) {
       return res.status(403).json({
-        message: "phone number already registered",
+        message: "email already registered",
       });
     } else {
       bcrypt.hash(password, 10).then((hash) => {
         //Registering the user
         const user = new UserModel({
-          phoneNumber: phoneNumber,
           email: email,
           fullName: fullName,
           password: hash,

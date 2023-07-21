@@ -9,12 +9,6 @@ const userSchema = new Schema({
   email: {
     type: String,
     required: [true, "email is required"]
-
-  },
-  phoneNumber: {
-    type: String,
-    required: [true, "phoneNumber name is required."],
-    minlength: 9,
   },
   password: {
     type: String,

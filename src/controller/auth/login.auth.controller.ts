@@ -7,13 +7,13 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 
 // Importing usermodel from user
-import { User } from "../../interfaces/user.interface";
+import {  UserModelID } from "../../interfaces/user.interface";
 import { showUsersbyEmail } from "../../utils/db_functions/user.db";
 
 export const login = async (req: Request, res: Response) => {
   //Destructing the inputs from req.body
   const { email, password } = req.body;
-  const getUser: User | null = await showUsersbyEmail(email);
+  const getUser: UserModelID | null = await showUsersbyEmail(email);
   if (!getUser) {
     //if user does not exist responding Authentication Failed
     return res.status(403).json({
@@ -40,7 +40,7 @@ export const login = async (req: Request, res: Response) => {
         );
         return res.status(200).json({
           accessToken: jwtToken,
-          getUser: getUser,
+          userId: getUser._id,
         });
       }
     })
