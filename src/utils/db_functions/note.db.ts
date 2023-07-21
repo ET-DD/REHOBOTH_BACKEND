@@ -36,15 +36,9 @@ export async function getAllNotes(id: string) {
 }
 
 export async function showNote(id: string) {
-  try {
     const note = await NoteModel.findOne({
-      "note._id": new mongoose.Types.ObjectId(id),
-    });
+      "note._id": new mongoose.Types.ObjectId(id)}, { "note.$": 1 }
+    );
 
-    return note;
-  } catch (error) {
-    // Handle error
-    console.error("Error retrieving note:", error);
-    throw error;
+    return note?.note[0] || null;
   }
-}

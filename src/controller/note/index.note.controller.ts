@@ -1,12 +1,13 @@
-import { createNote } from "./create.note.controller";
-import { getAllNotes, showNote } from "../../utils/db_functions/note.db";
+import { createNote, createBody} from "./create.note.controller";
+import { getNote, getNotes} from "./get.note.controller"
 import { deleteNote } from "./delete.note.controller";
 import { updateNote } from "./update.note.controller";
 
 export {
     createNote,
-    getAllNotes,
-    showNote, 
+    createBody, 
+    getNote,
+    getNotes, 
     deleteNote,
     updateNote
 };
