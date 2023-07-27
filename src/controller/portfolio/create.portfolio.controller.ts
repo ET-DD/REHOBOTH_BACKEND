@@ -2,58 +2,56 @@
 import PortfolioModel from "../../model/portfolio.model";
 
 // Importing the the cloudinary config
-import { uploads } from "../../config/cloudinary";
 import { Request, Response } from "express";
+import { Mloop } from "../../utils/db_functions/help";
 
-//Imporing file system library
-import fs from "fs";
+export const create = async (req: Request, res: Response) => {
+  //Destruct the data sent from req.body
+  const { title, description, body } = req.body;
 
+  try {
+    if (req.method === "POST") {
+      if (req.files) {
+        const files = req.files;
 
-export const create = async (req:Request, res:Response) => {
-    //Destruct the data sent from req.body 
-    const { title, description, body } = req.body
-    const uploader = async (path) => await uploads(path, "Images")
+        const urls = await Mloop(files);
 
-    try {
+        //creating the service
+        const portfolio = await new PortfolioModel({
+          title: title,
+          description: description,
+          body: body,
+          files: urls,
+        });
 
-        if (req.method === 'POST') {
+        portfolio.save();
+        return res.status(201).json({
+          success: true,
+          message: "portfolio created sucessfully",
+        });
+      } else {
+        //creating the service
+        const portfolio = await new PortfolioModel({
+          title: title,
+          description: description,
+          body: body,
+        });
 
-            const urls = []
-            if (req.files) {
-                const files = req.files;
-                // for (const file of files) {
-                //     const { path } = file;
-                //     const newPath = await uploader(path)
-                //     urls.push(newPath)
-                //     fs.unlinkSync(path)
-                // }
-            }
-
-
-            //creating the service
-            const portfolio = await new PortfolioModel({
-                title: title,
-                description: description,
-                body: body,
-                files: urls
-            })
-
-            portfolio.save()
-            return res.status(201).json({
-                success: true,
-                message: "portfolio created sucessfully",
-            })
-        } else {
-            return res.status(405).json({
-                err: `${req.method} method not allowed`
-            })
-        }
-
-    } catch (error) {
-        return res.status(412).json({
-            success: false,
-            message: error
-        })
+        portfolio.save();
+        return res.status(201).json({
+          success: true,
+          message: "portfolio created sucessfully",
+        });
+      }
+    } else {
+      return res.status(405).json({
+        err: `${req.method} method not allowed`,
+      });
     }
-
-}
+  } catch (error) {
+    return res.status(412).json({
+      success: false,
+      message: error,
+    });
+  }
+};

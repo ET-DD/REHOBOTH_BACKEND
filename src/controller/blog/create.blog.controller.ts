@@ -11,7 +11,6 @@ export const create = async (req: Request, res: Response) => {
     if (req.method === "POST") {
         const files = req.files;
         const urls = await Mloop(files);
-        console.log("urls", urls)
       //creating the blog
       const blog = await new BlogModel({
         title: title,

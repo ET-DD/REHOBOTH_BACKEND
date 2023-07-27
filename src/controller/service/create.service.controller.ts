@@ -1,61 +1,58 @@
 //Importing the product model to the controller
 import ServiceModel from "../../model/service.model";
 
-// Importing the the cloudinary config
-import { uploads } from "../../config/cloudinary";
-
-//Imporing file system library
-import fs from "fs";
-
 import { Request, Response } from "express";
+import { Mloop } from "../../utils/db_functions/help";
 
-export const create = async (req:Request, res:Response) => {
-    //Destruct the data sent from req.body 
-    const { name, description, price, quantity } = req.body
-    const uploader = async (path) => await uploads(path, "Images")
+export const create = async (req: Request, res: Response) => {
+  //Destruct the data sent from req.body
+  const { name, description, price, quantity } = req.body;
 
-    try {
+  try {
+    if (req.method === "POST") {
+      if (req.files) {
+        const files = req.files;
+        const urls = await Mloop(files);
+        //creating the service
+        const service = await new ServiceModel({
+          name: name,
+          description: description,
+          price: price,
+          quantity: quantity,
+          files: urls,
+        });
 
-        if (req.method === 'POST') {
+        service.save();
+        return res.status(201).json({
+          success: true,
+          message: "service created sucessfully",
+          data: service,
+        });
+      } else {
+        //creating the service
+        const service = await new ServiceModel({
+          name: name,
+          description: description,
+          price: price,
+          quantity: quantity,
+        });
 
-            const urls = []
-            if (req.files) {
-                const files = req.files;
-                // for (const file of files) {
-                //     const { path } = file;
-                //     const newPath = await uploader(path)
-                //     urls.push(newPath)
-                //     fs.unlinkSync(path)
-                // }
-            }
-
-
-            //creating the service
-            const service = await new ServiceModel({
-                name: name,
-                description: description,
-                price: price,
-                quantity: quantity,
-                files: urls
-            })
-
-            service.save()
-            return res.status(201).json({
-                success: true,
-                message: "service created sucessfully",
-                data: service
-            })
-        } else {
-            return res.status(405).json({
-                err: `${req.method} method not allowed`
-            })
-        }
-
-    } catch (error) {
-        return res.status(412).json({
-            success: false,
-            message: error
-        })
+        service.save();
+        return res.status(201).json({
+          success: true,
+          message: "service created sucessfully",
+          data: service,
+        });
+      }
+    } else {
+      return res.status(405).json({
+        err: `${req.method} method not allowed`,
+      });
     }
-
-}
+  } catch (error) {
+    return res.status(412).json({
+      success: false,
+      message: error,
+    });
+  }
+};

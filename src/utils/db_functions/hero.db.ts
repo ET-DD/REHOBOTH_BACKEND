@@ -21,3 +21,6 @@ export async function showHero(id: string) {
     throw error;
   }
 }
+
+
+
