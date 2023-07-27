@@ -1,10 +1,5 @@
 //Importing the product model to the controller
 import BlogModel from "../../model/blog.model";
-
-// import { cloudinaryInstance } from "../../config/index";
-
-//Imporing file system library
-import fs from "fs";
 import { Request, Response } from "express";
 import { Mloop } from "../../utils/db_functions/help";
 
