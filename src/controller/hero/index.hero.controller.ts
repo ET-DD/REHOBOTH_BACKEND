@@ -1,9 +1,11 @@
-import { createFolder } from "./create.folder.controller";
-import { getFolder, getFolders } from "./get.folder.controller";
-import { deleteFolder  } from "./delete.folder.controller";
+import { create } from "./create.hero.controller";
+import { getHero, getHeros } from "./get.hero.controller";
+import { deleteHero  } from "./delete.hero.controller";
+import { update } from "./update.hero.controller";
 export {
-    createFolder,
-    getFolder, 
-    getFolders, 
-    deleteFolder
+    create,
+    getHero, 
+    getHeros, 
+    deleteHero, 
+    update
 };
