@@ -9,11 +9,11 @@ import {
 import { authJWT } from "../middleware/authJWT";
 const router = express.Router();
 
-router.post("/create", authJWT, createRoute);
-router.get("/get", authJWT, getRoutes);
-router.get("/show/:id",  authJWT,getRoute);
-router.get("/update/:id",  authJWT, updateRoute);
+router.post("/create",  createRoute);
+router.get("/get",  getRoutes);
+router.get("/show/:id",  getRoute);
+router.get("/update/:id",   updateRoute);
 
-router.delete("/delete/:id", authJWT, deleteRoute);
+router.delete("/delete/:id",  deleteRoute);
 
 export default router;
