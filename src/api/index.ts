@@ -1,12 +1,21 @@
 import express from "express";
 import auth from "./auth.api";
 import blog from "./blog.api";
+import route from "./routes.api";
+import path from "./path.api";
+import customer from "./customer.api";
+import contact from "./contact.api";
 
 
 const router = express.Router();
 
 router.use("/auth", auth);
 router.use("/blog", blog);
+router.use("/route", route);
+router.use("/path", path);
+router.use("/customer", customer);
+router.use("/contact", contact);
+
 
 
 export default router;
