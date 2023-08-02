@@ -5,7 +5,7 @@ export const updateRoute = async (req: Request, res: Response) => {
   const verifyRoute = await RouteModel.findOne({ _id: id });
 
   if (verifyRoute) {
-    await RouteModel.updateOne({ _id: req.params.id }, { $set: req.body });
+    await RouteModel.updateOne({ _id: id }, { $set: req.body });
     res.status(201).json({
       message: "route updated successfully",
       success: true,

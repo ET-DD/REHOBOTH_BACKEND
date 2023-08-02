@@ -12,7 +12,7 @@ const router = express.Router();
 router.post("/create",  createRoute);
 router.get("/get",  getRoutes);
 router.get("/show/:id",  getRoute);
-router.get("/update/:id",   updateRoute);
+router.put("/update/:id",   updateRoute);
 
 router.delete("/delete/:id",  deleteRoute);
 

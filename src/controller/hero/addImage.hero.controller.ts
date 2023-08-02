@@ -11,7 +11,6 @@ export const addImage = async (req: Request, res: Response) => {
       if (req.files) {
         const files = req.files;
         const urls = await Mloop(files);
-        console.log("urls", urls);
 
         //we use uuidv4 to generate a random and unique id for the heros
         const verifyhero = await HeroModel.findOne({ _id: id });

@@ -11,6 +11,12 @@ const RouteShema = new Schema({
   endingPoint: {
     type: String,
   },
+  price: {
+    type:Number
+  }, 
+  description: {
+    type:String
+  },
   path: { type: [PathSchema], default: [] },
 });
 

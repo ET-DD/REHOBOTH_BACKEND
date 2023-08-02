@@ -15,10 +15,12 @@ export const register = async (req: Request, res: Response) => {
     fullName,
     email,
     password,
+    phoneNumber
   }: {
     fullName: string;
     email: string;
     password: string;
+    phoneNumber: string
   } = req.body;
 
   //Verifying the email address inputed is not used already
@@ -36,6 +38,8 @@ export const register = async (req: Request, res: Response) => {
           email: email,
           fullName: fullName,
           password: hash,
+          phoneNumber: phoneNumber
+          
         });
         //saving the data to the mongodb user collection
         user

@@ -14,6 +14,10 @@ const userSchema = new Schema({
     type: String,
     required: [true, "Password is required"],
   },
+  phoneNumber: {
+    type: String,
+    required: [true, "phone number is required"],
+  },
   created: {
     type: Date,
     default: Date.now,

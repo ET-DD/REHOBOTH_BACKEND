@@ -12,7 +12,6 @@ export async function loop(Ifiles) {
           urls = newPath;
           // fs.unlinkSync(path);
         }
-        console.log("urlsinhelp", urls)
         return urls
     } catch (error) {
       // Handle error
@@ -22,16 +21,13 @@ export async function loop(Ifiles) {
   }
 
   export async function Mloop(Ifiles) {
-    console.log("IFiles", Ifiles)
     const uploader = async (path) => await uploads(path, "Images");
   
       try {
           const urls = []
           for (const file of Ifiles) {
             const { path } = file;
-            console.log("path",path)
             const newPath = await uploader(path);
-            console.log("newPath", newPath)
             urls.push(newPath)
             // fs.unlinkSync(path)
           }

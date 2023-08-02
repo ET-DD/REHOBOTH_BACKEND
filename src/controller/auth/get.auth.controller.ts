@@ -6,7 +6,6 @@ import { getAllUsers, showUsersbyId } from "../../utils/db_functions/user.db";
 
 export const getUsers = async (req:Request, res:Response) => {
   const user = await getAllUsers();
-  console.log("user", user)
 
   res.status(200).json(user);
 };

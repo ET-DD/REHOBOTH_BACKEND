@@ -23,17 +23,17 @@ export async function showRoute(id: string) {
   }
 }
 
-export async function getAllPath(id: string) {
-  try {
-    const Routes = await RoutesModel.findById(id);
-    const paths = Routes.path;
-    return paths;
-  } catch (error) {
-    // Handle error
-    console.error("Error retrieving note:", error);
-    throw error;
-  }
-}
+// export async function getAllPath(id: string) {
+//   try {
+//     const Routes = await RoutesModel.findById(id);
+//     const paths = Routes.path;
+//     return paths;
+//   } catch (error) {
+//     // Handle error
+//     console.error("Error retrieving note:", error);
+//     throw error;
+//   }
+// }
 
 export async function showPath(id: string) {
     const paths = await RoutesModel.findOne({
