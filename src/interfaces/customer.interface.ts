@@ -1,8 +1,14 @@
-export interface Contact {
-    parentName: string,
-    childName: string,
-    phoneNumber: string, 
-    childAge: string, 
-    routeId: string
+export interface Customer {
+  parentName: string,
+  motherName?: string,
+  studentName: string,
+  FphoneNumber: string,
+  MphoneNumber?: string,
+  studentAge: string,
+  studentGrade: string,
+  startingPoint: string,
+  files: [],
+  medical: string,
+  routeId: string,
   }
   
