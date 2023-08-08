@@ -8,6 +8,7 @@ export interface Customer {
   studentGrade: string,
   startingPoint: string,
   files: [],
+  studentGender:string,
   medical: string,
   routeId: string,
   }

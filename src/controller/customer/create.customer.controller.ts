@@ -5,7 +5,19 @@ import { Mloop } from "../../utils/db_functions/help";
 
 export const create = async (req: Request, res: Response) => {
   //Destruct the data sent from req.body
-        const { parentName,motherName, studentName,studentAge,studentGrade,startingPoint, FphoneNumber, MphoneNumber, medical,routeId } = req.body;
+  const {
+    parentName,
+    motherName,
+    studentName,
+    studentGender,
+    studentAge,
+    studentGrade,
+    startingPoint,
+    FphoneNumber,
+    MphoneNumber,
+    medical,
+    routeId,
+  } = req.body;
 
   try {
     if (req.method === "POST") {
@@ -20,6 +32,7 @@ export const create = async (req: Request, res: Response) => {
         MphoneNumber: MphoneNumber,
         studentAge: studentAge,
         studentGrade: studentGrade,
+        studentGender: studentGender,
         startingPoint: startingPoint,
         files: urls,
         medical: medical,

@@ -9,6 +9,7 @@ const CustomerSchema = new Schema({
   studentAge: { type: String },
   studentGrade: { type: String },
   startingPoint: { type: String },
+  studentGender: { type:String},
   files: { type: Array },
   medical: { type: String },
   routeId: { type: String },

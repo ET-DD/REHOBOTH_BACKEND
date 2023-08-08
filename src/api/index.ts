@@ -5,6 +5,8 @@ import route from "./routes.api";
 import path from "./path.api";
 import customer from "./customer.api";
 import contact from "./contact.api";
+import contactinfo from "./contactinfo.api";
+
 
 
 const router = express.Router();
@@ -15,6 +17,8 @@ router.use("/route", route);
 router.use("/path", path);
 router.use("/customer", customer);
 router.use("/contact", contact);
+router.use("/contact-info", contactinfo);
+
 
 
 
