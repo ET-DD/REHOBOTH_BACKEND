@@ -20,35 +20,36 @@ export const create = async (req: Request, res: Response) => {
   } = req.body;
 
   // try {
-    if (req.method === "POST") {
-      const files = req.files;
-      const urls = await Mloop(files);
+  if (req.method === "POST") {
+    console.log("req.body", req.body)
+    const files = req.files;
+    console.log("files", files);
+    const urls = await Mloop(files);
+    const Customer = await new CustomerModel({
+      parentName: parentName,
+      motherName: motherName,
+      studentName: studentName,
+      FphoneNumber: FphoneNumber,
+      MphoneNumber: MphoneNumber,
+      studentAge: studentAge,
+      studentGrade: studentGrade,
+      studentGender: studentGender,
+      startingPoint: startingPoint,
+      files: urls,
+      medical: medical,
+      routeId: routeId,
+    });
 
-      const Customer = await new CustomerModel({
-        parentName: parentName,
-        motherName: motherName,
-        studentName: studentName,
-        FphoneNumber: FphoneNumber,
-        MphoneNumber: MphoneNumber,
-        studentAge: studentAge,
-        studentGrade: studentGrade,
-        studentGender: studentGender,
-        startingPoint: startingPoint,
-        files: urls,
-        medical: medical,
-        routeId: routeId,
-      });
-
-      Customer.save();
-      return res.status(201).json({
-        success: true,
-        message: "you have registered successfully",
-      });
-    } else {
-      return res.status(405).json({
-        err: `${req.method} method not allowed`,
-      });
-    }
+    Customer.save();
+    return res.status(201).json({
+      success: true,
+      message: "you have registered successfully",
+    });
+  } else {
+    return res.status(405).json({
+      err: `${req.method} method not allowed`,
+    });
+  }
   // } catch (error) {
   //   return res.status(412).json({
   //     success: false,
