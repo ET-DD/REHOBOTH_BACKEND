@@ -1,7 +1,7 @@
 //Importing the hero model to the controller
 import CustomerModel from "../../model/customer.model";
 import { Request, Response } from "express";
-import { Mloop } from "../../utils/db_functions/help";
+import { Mloop, loop } from "../../utils/db_functions/help";
 
 export const create = async (req: Request, res: Response) => {
   //Destruct the data sent from req.body
@@ -19,7 +19,7 @@ export const create = async (req: Request, res: Response) => {
     routeId,
   } = req.body;
 
-  try {
+  // try {
     if (req.method === "POST") {
       const files = req.files;
       const urls = await Mloop(files);
@@ -49,10 +49,10 @@ export const create = async (req: Request, res: Response) => {
         err: `${req.method} method not allowed`,
       });
     }
-  } catch (error) {
-    return res.status(412).json({
-      success: false,
-      message: error,
-    });
-  }
+  // } catch (error) {
+  //   return res.status(412).json({
+  //     success: false,
+  //     message: error,
+  //   });
+  // }
 };

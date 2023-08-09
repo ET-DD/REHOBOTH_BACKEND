@@ -1,17 +1,15 @@
 /* eslint-disable no-const-assign */
 import { uploads } from "../../config/cloudinary";
-import fs from "fs"
 export async function loop(Ifiles) {
   const uploader = async (path) => await uploads(path, "Images");
 
     try {
         let urls;
-        for (const file of Ifiles) {
-          const { path } = file;
+
+          const { path } = Ifiles;
           const newPath = await uploader(path);
           urls = newPath;
           // fs.unlinkSync(path);
-        }
         return urls
     } catch (error) {
       // Handle error
