@@ -6,7 +6,7 @@ import { Mloop, loop } from "../../utils/db_functions/help";
 export const create = async (req: Request, res: Response) => {
   //Destruct the data sent from req.body
   const {
-    parentName,
+    fatherName,
     motherName,
     studentName,
     studentGender,
@@ -21,30 +21,52 @@ export const create = async (req: Request, res: Response) => {
 
   // try {
   if (req.method === "POST") {
-    console.log("req.body", req.body)
-    const files = req.files;
-    console.log("files", files);
-    const urls = await Mloop(files);
-    const Customer = await new CustomerModel({
-      parentName: parentName,
-      motherName: motherName,
-      studentName: studentName,
-      FphoneNumber: FphoneNumber,
-      MphoneNumber: MphoneNumber,
-      studentAge: studentAge,
-      studentGrade: studentGrade,
-      studentGender: studentGender,
-      startingPoint: startingPoint,
-      files: urls,
-      medical: medical,
-      routeId: routeId,
-    });
+    if (req.files) {
+      console.log("req.body", req.body)
+      const files = req.files;
+      console.log("files", files);
+      const urls = await Mloop(files);
+      const Customer = await new CustomerModel({
+        fatherName: fatherName,
+        motherName: motherName,
+        studentName: studentName,
+        FphoneNumber: FphoneNumber,
+        MphoneNumber: MphoneNumber,
+        studentAge: studentAge,
+        studentGrade: studentGrade,
+        studentGender: studentGender,
+        startingPoint: startingPoint,
+        files: urls,
+        medical: medical,
+        routeId: routeId,
+      });
 
-    Customer.save();
-    return res.status(201).json({
-      success: true,
-      message: "you have registered successfully",
-    });
+      Customer.save();
+      return res.status(201).json({
+        success: true,
+        message: "you have registered successfully",
+      });
+    } else {
+      const Customer = await new CustomerModel({
+        fatherName: fatherName,
+        motherName: motherName,
+        studentName: studentName,
+        FphoneNumber: FphoneNumber,
+        MphoneNumber: MphoneNumber,
+        studentAge: studentAge,
+        studentGrade: studentGrade,
+        studentGender: studentGender,
+        startingPoint: startingPoint,
+        medical: medical,
+        routeId: routeId,
+      });
+
+      Customer.save();
+      return res.status(201).json({
+        success: true,
+        message: "you have registered successfully",
+      });
+    }
   } else {
     return res.status(405).json({
       err: `${req.method} method not allowed`,

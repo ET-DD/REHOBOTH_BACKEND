@@ -1,5 +1,5 @@
 export interface Customer {
-  parentName: string,
+  fatherName: string,
   motherName?: string,
   studentName: string,
   FphoneNumber: string,
