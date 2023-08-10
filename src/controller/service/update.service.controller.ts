@@ -31,16 +31,16 @@ export const update = async (req:Request, res:Response) => {
     }
 
     //updating the datas of that product
-    const urls = [];
-    if (req.files) {
-      const files = req.files;
-      // for (const file of files) {
-      //   const { path } = file;
-      //   const newPath = await uploader(path);
-      //   urls.push(newPath);
-      //   fs.unlinkSync(path);
-      // }
-    }
+    // const urls = [];
+    // if (req.files) {
+    //   const files = req.files;
+    //   // for (const file of files) {
+    //   //   const { path } = file;
+    //   //   const newPath = await uploader(path);
+    //   //   urls.push(newPath);
+    //   //   fs.unlinkSync(path);
+    //   // }
+    // }
 
     services.updateOne(req.body, { useFindAndModify: false }).then((data) => {
       if (!data) {

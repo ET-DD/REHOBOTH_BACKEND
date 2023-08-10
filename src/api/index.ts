@@ -7,13 +7,15 @@ import customer from "./customer.api";
 import contact from "./contact.api";
 import contactinfo from "./contactinfo.api";
 import hero from "./hero.api"
-
+import service from "./service.api"
 
 const router = express.Router();
 
 router.use("/auth", auth);
 router.use("/hero", hero);
 router.use("/blog", blog);
+router.use("/service", service);
+
 router.use("/route", route);
 router.use("/path", path);
 router.use("/customer", customer);

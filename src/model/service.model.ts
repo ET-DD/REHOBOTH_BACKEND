@@ -9,11 +9,11 @@ const serviceSchema = new Schema({
   description: {
     type: String,
   },
-  body: {
-    type: String,
-  },
-  files: {
-    type: Array,
-  },
+  // body: {
+  //   type: String,
+  // },
+  // files: {
+  //   type: Array,
+  // },
 });
 export default model("Service", serviceSchema);
