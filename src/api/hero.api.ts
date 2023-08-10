@@ -1,7 +1,7 @@
 import express from "express";
 import {
  create,
- update, 
+//  update, 
  getHero,
  getHeros, 
  deleteHero
@@ -12,7 +12,7 @@ const router = express.Router();
 router.post("/create", create);
 router.get("/get",  getHeros);
 router.get("/show/:id", authJWT, getHero);
-router.put("/update/:id", authJWT, update);
+// router.put("/update/:id", authJWT, update);
 router.delete("/delete/:id", authJWT, deleteHero);
 
 

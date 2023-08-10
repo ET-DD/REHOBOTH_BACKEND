@@ -1,15 +1,16 @@
 //Importing the product model to the controller
 import BlogModel from "../../model/blog.model";
-import { Request, Response } from "express";
 import { Mloop } from "../../utils/db_functions/help";
-
-export const create = async (req: Request, res: Response) => {
+import { Request, Response } from "express"
+export const create = async (req: Request , res: Response) => {
   //Destruct the data sent from req.body
   const { title, description, links, body } = req.body;
 
   try {
     if (req.method === "POST") {
+      console.log("req.body",req.body)
         const files = req.files;
+        console.log("files", files)
         const urls = await Mloop(files);
       //creating the blog
       const blog = await new BlogModel({

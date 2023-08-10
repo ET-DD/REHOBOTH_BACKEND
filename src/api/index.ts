@@ -6,12 +6,13 @@ import path from "./path.api";
 import customer from "./customer.api";
 import contact from "./contact.api";
 import contactinfo from "./contactinfo.api";
-
+import hero from "./hero.api"
 
 
 const router = express.Router();
 
 router.use("/auth", auth);
+router.use("/hero", hero);
 router.use("/blog", blog);
 router.use("/route", route);
 router.use("/path", path);

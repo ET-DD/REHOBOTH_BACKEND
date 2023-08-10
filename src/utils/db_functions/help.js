@@ -25,6 +25,7 @@ export async function loop(Ifiles) {
           const urls = []
           for (const file of Ifiles) {
             const { path } = file;
+            console.log("path",path)
             const newPath = await uploader(path);
             urls.push(newPath)
             // fs.unlinkSync(path)

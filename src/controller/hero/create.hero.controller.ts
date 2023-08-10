@@ -10,6 +10,7 @@ export const create = async (req: Request, res: Response) => {
   try {
     if (req.method === "POST") {
       if (req.files) {
+
         const files = req.files;
         const urls = await Mloop(files);
 
