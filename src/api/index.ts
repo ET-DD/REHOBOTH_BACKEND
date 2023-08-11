@@ -15,7 +15,6 @@ router.use("/auth", auth);
 router.use("/hero", hero);
 router.use("/blog", blog);
 router.use("/service", service);
-
 router.use("/route", route);
 router.use("/path", path);
 router.use("/customer", customer);
