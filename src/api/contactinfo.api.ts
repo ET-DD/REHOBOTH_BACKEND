@@ -9,7 +9,7 @@ import {
 import { authJWT } from "../middleware/authJWT";
 const router = express.Router();
 
-router.post("/create", createInfo);
+router.post("/create", authJWT,  createInfo);
 router.get("/get",  getContactInfos);
 router.get("/show/:id", authJWT, getContactInfo);
 router.put("/update/:id", authJWT, update)

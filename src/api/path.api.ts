@@ -8,10 +8,10 @@ import {
 import { authJWT } from "../middleware/authJWT";
 const router = express.Router();
 
-router.post("/create/:id",   createPath);
+router.post("/create/:id",   authJWT, createPath);
 // router.get("/get",  getPaths);
 router.get("/show/:id",  getPath);
-router.get("/update/:id",   updatePath);
-router.delete("/delete/:id",   deletePath);
+router.get("/update/:id",  authJWT, updatePath);
+router.delete("/delete/:id",  authJWT, deletePath);
 
 export default router;
