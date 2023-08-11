@@ -4,9 +4,9 @@ export async function loop(Ifiles) {
   const uploader = async (path) => await uploads(path, "Images");
 
     try {
-        let urls;
-
-          const { path } = Ifiles;
+          let urls;
+          const { path } = Ifiles[0];
+          console.log("path", path)
           const newPath = await uploader(path);
           urls = newPath;
           // fs.unlinkSync(path);
