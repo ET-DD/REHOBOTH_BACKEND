@@ -42,7 +42,7 @@ export const create = async (req: Request, res: Response) => {
     Customer.save();
     return res.status(201).json({
       success: true,
-      message: "you have registered successfully",
+      message: "you have registerd successfully we will contact you for conformation, thankyou",
     });
     } else {
       const Customer = await new CustomerModel({
