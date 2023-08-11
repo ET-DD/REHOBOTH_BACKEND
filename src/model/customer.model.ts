@@ -1,7 +1,7 @@
 import { Schema, model } from "mongoose";
 
 const CustomerSchema = new Schema({
-  parentName: { type: String },
+  fatherName: { type: String },
   motherName: { type: String },
   studentName: { type: String },
   FphoneNumber: { type: String },
